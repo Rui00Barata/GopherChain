@@ -52,8 +52,8 @@ func TestBlockIntegration(t *testing.T) {
 	assert.NotEmpty(block.Hash, "Block hash should not be empty")
 
 	// Verify timestamp is recent
-	now := time.Now().Unix()
-	assert.True(block.Timestamp <= now && block.Timestamp > now-60, "Block timestamp should be within the last minute")
+	now := time.Now().UnixNano()
+	assert.True(block.Timestamp <= now && block.Timestamp > now-(60*1e9), "Block timestamp should be within the last minute")
 
 	// Verify hash changes when data changes
 	originalHash := make([]byte, len(block.Hash))

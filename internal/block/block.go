@@ -22,7 +22,7 @@ func (b *Block) SetHash() {
 }
 
 func NewBlock(data string, prevBlockHash []byte) *Block {
-	block := &Block{time.Now().Unix(), []byte(data), prevBlockHash, []byte{}}
+	block := &Block{time.Now().UnixNano(), []byte(data), prevBlockHash, []byte{}}
 	block.SetHash()
 	return block
 }
